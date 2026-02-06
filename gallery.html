@@ -12,6 +12,7 @@
   fetch('https://api.github.com/repos/c-gallery/exhibition-site/contents/images')
     .then(response => response.json())
     .then(files => {
+      console.log(files);
       const gallery = document.getElementById("gallery");
 
       files.forEach(file => {
