@@ -9,23 +9,20 @@
   <div id="gallery"></div>
 
   <script>
-    // 読み込む画像のファイル名リスト
-    const images = [
-      "001.jpg",
-      "002.jpg",
-      "003.jpg"
-    ];
+    fetch('images/images.json')
+      .then(response => response.json())
+      .then(files => {
+        const gallery = document.getElementById("gallery");
 
-    const gallery = document.getElementById("gallery");
-
-    images.forEach(file => {
-      const img = document.createElement("img");
-      img.src = `images/${file}`;
-      img.alt = file;
-      img.style.width = "200px";
-      img.style.margin = "10px";
-      gallery.appendChild(img);
-    });
+        files.forEach(file => {
+          const img = document.createElement("img");
+          img.src = `images/${file}`;
+          img.alt = file;
+          img.style.width = "200px";
+          img.style.margin = "10px";
+          gallery.appendChild(img);
+        });
+      });
   </script>
 </body>
 </html>
