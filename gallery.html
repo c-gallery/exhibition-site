@@ -8,7 +8,7 @@
   <h1>ギャラリー</h1>
   <div id="gallery"></div>
 
- <script>
+<script>
   fetch('https://api.github.com/repos/c-gallery/exhibition-site/contents/images')
     .then(response => response.json())
     .then(files => {
@@ -17,7 +17,7 @@
       files.forEach(file => {
         if (file.name.match(/\.(png|jpg|jpeg)$/i)) {
           const img = document.createElement("img");
-          img.src = file.download_url;
+          img.src = encodeURI(file.download_url);  // ← ここだけ変更
           img.alt = file.name;
           img.style.width = "220px";
           img.style.margin = "10px";
