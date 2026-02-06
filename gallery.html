@@ -17,7 +17,8 @@
       files.forEach(file => {
         if (file.name.match(/\.(png|jpg|jpeg)$/i)) {
           const img = document.createElement("img");
-          img.src = file.download_url; // ← ここだけ変更
+          const rawUrl = `https://raw.githubusercontent.com/c-gallery/exhibition-site/main/${file.path}`;
+img.src = file.download_url || rawUrl; // ← ここだけ変更
           img.alt = file.name;
           img.style.width = "220px";
           img.style.margin = "10px";
